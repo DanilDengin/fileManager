@@ -7,10 +7,7 @@ interface FileInfoItemUseCase {
 
     suspend fun getFileList(path: String): List<FileInfoItem>?
 
-    suspend fun applyFilter(
-        selectedFilter: SelectedFilter,
-        fileInfoItemList: List<FileInfoItem>
-    ): List<FileInfoItem>
+    suspend fun applyFilter(selectedFilter: SelectedFilter): List<FileInfoItem>
 
     suspend fun getLastModifiedFilesByPath(path: String): List<FileInfoItem>
 }

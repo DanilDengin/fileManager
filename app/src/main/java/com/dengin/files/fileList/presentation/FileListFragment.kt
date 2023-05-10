@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
@@ -131,14 +132,20 @@ class FileListFragment : Fragment(R.layout.fragment_file_list) {
         initMenu()
         initObservers()
         initFragmentResultListener()
+        initListeners()
+    }
+
+    private fun initListeners() {
         binding.permissionButton.setOnClickListener {
             requestPermission.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
         }
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when (tab.position) {
-                    0 -> viewModel.getFolderContent(argument ?: homeDirectory)
-                    1 -> viewModel.getLastModifiedFilesByPath(argument ?: homeDirectory)
+                    ALL_FILES_TAB -> viewModel.getFolderContent(argument ?: homeDirectory)
+                    LAST_MODIFIED_FILES_TAB -> viewModel.getLastModifiedFilesByPath(
+                        argument ?: homeDirectory
+                    )
                 }
             }
 
@@ -151,6 +158,9 @@ class FileListFragment : Fragment(R.layout.fragment_file_list) {
         viewModel.fileList.observe(viewLifecycleOwner, ::updateView)
         viewModel.exceptionText.observe(viewLifecycleOwner) { exceptionToast ->
             Toast.makeText(requireContext(), exceptionToast, Toast.LENGTH_SHORT).show()
+        }
+        viewModel.progressBarState.observe(viewLifecycleOwner) { isVisible ->
+            binding.progressBar.isVisible = isVisible
         }
     }
 
@@ -225,6 +235,7 @@ class FileListFragment : Fragment(R.layout.fragment_file_list) {
             FILTER_KEY,
             viewLifecycleOwner
         ) { _, bundle ->
+            binding.tabLayout.getTabAt(ALL_FILES_TAB)?.select()
             val firstFilter = FIRST_FILTER_BUNDLE_KEY.getParcelableArgumentByKey(bundle)
             val secondFilter = SECOND_FILTER_BUNDLE_KEY.getParcelableArgumentByKey(bundle)
             firstFilter?.also { filter ->
@@ -296,6 +307,8 @@ class FileListFragment : Fragment(R.layout.fragment_file_list) {
 
     companion object {
         private const val RECYCLER_VIEW_START_POSITION = 0
+        private const val ALL_FILES_TAB = 0
+        private const val LAST_MODIFIED_FILES_TAB = 1
         const val FILE_PATH_ARG = "filePathArg"
     }
 }

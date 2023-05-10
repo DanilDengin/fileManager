@@ -29,10 +29,7 @@ class FileInfoItemUseCaseImpl @Inject constructor(
         }
     }
 
-    override suspend fun applyFilter(
-        selectedFilter: SelectedFilter,
-        fileInfoItemList: List<FileInfoItem>
-    ): List<FileInfoItem> {
+    override suspend fun applyFilter(selectedFilter: SelectedFilter): List<FileInfoItem> {
         return withContext(Dispatchers.Default) {
             when (selectedFilter) {
                 SelectedFilter.NOTHING -> {

@@ -29,6 +29,8 @@ class FileListViewModel @Inject constructor(
     val exceptionText: LiveData<String> get() = _exceptionText
     val filterList =
         ArrayList<SelectedFilter>(listOf(SelectedFilter.NOTHING, SelectedFilter.NOTHING))
+    val progressBarState: LiveData<Boolean> get() = _progressBarState
+    private val _progressBarState = MutableLiveData<Boolean>()
     private val _exceptionText = SingleLiveEvent<String>()
     private val _fileList = MutableLiveData<List<FileInfoItem>?>()
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
@@ -38,7 +40,9 @@ class FileListViewModel @Inject constructor(
 
     fun getFolderContent(path: String) {
         viewModelScope.launch(coroutineExceptionHandler) {
+            _progressBarState.value = true
             _fileList.value = fileListUseCase.getFileList(path)
+            _progressBarState.value = false
             fileListUseCase.getLastModifiedFilesByPath(path)
         }
     }
