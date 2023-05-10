@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".fileFilter.presentation.FileFilterFragment">
+
+    <TextView
+        android:id="@+id/filterFileTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/filer_file_title_radio_button"
+        android:textAppearance="@style/Widget.File.HeaderTextView" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupFileFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp">
+
+        <RadioButton
+            android:id="@+id/radioButtonCreationDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/filer_creation_date_radio_button" />
+
+        <RadioButton
+            android:id="@+id/radioButtonAscendingSizeFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/filer_ascending_size_radio_button" />
+
+        <RadioButton
+            android:id="@+id/radioButtonDescendingSizeFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/filer_descending_size_radio_button" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/filterTypeFileTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/filer_type_file_title_radio_button"
+        android:textAppearance="@style/Widget.File.HeaderTextView" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupFileTypeFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp">
+
+        <RadioButton
+            android:id="@+id/radioButtonDocumentType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/filer_type_document_radio_button" />
+
+        <RadioButton
+            android:id="@+id/radioButtonImageType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/filer_type_image_radio_button" />
+
+        <RadioButton
+            android:id="@+id/radioButtonPdfType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/filer_type_pdf_radio_button" />
+
+        <RadioButton
+            android:id="@+id/radioButtonVideoType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/filer_type_video_radio_button" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/resetTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/reset_all_text_view"
+        android:textAppearance="@style/Widget.File.LinkTextView" />
+
+    <Button
+        android:id="@+id/applyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="20dp"
+        android:enabled="false"
+        android:text="@string/apply_text_view" />
+
+</LinearLayout>

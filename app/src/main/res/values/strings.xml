@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Storage</string>
+    <plurals name="file_size_text_view">
+        <item quantity="zero">No items ∙&#160;</item>
+        <item quantity="one">%1$d item ∙&#160;</item>
+        <item quantity="other">%1$d items ∙&#160;</item>
+    </plurals>
+    <string name="file_size_b_text_view">%s b ∙&#160;</string>
+    <string name="file_size_Kb_text_view">%s Kb ∙&#160;</string>
+    <string name="file_size_Mb_text_view">%s Mb ∙&#160;</string>
+    <string name="file_size_Gb_text_view">%s Gb ∙&#160;</string>
+    <string name="filer_file_title_radio_button">Sort by</string>
+    <string name="filer_type_file_title_radio_button">Show only</string>
+    <string name="filer_descending_size_radio_button">Descending file size</string>
+    <string name="filer_ascending_size_radio_button">Ascending file size</string>
+    <string name="filer_type_document_radio_button">Document</string>
+    <string name="filer_type_image_radio_button">Image</string>
+    <string name="filer_type_pdf_radio_button">PDF</string>
+    <string name="filer_type_video_radio_button">Video</string>
+    <string name="reset_all_text_view">Reset filter</string>
+    <string name="apply_text_view">Apply</string>
+    <string name="filer_creation_date_radio_button">Date of creation</string>
+    <string name="exception_toast">Oops, something went wrong! Try to restart the app.</string>
+    <string name="filer_title_menu">Filter</string>
+    <string name="permission_button">Give permission</string>
+    <string name="require_permission_toast">Without permission the app can&#8217;t function properly</string>
+    <string name="no_files_text_view">Files not found</string>
+    <string name="open_file_error_toast">You do not have apps to open the file</string>
+    <string name="all_file_tab_item">All files</string>
+    <string name="last_modified_file_tab_item">Last modified files</string>
+</resources>
